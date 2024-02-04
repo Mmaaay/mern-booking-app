@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layouts/Layout";
-import Register from "./pages/register"
+import Register from "./pages/Register"
 import SignIn from "./pages/SignIn";
 
 function App() {
