@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, useNavigate } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Register from "./pages/Register";
 import SignIn from "./pages/SignIn";
@@ -9,7 +9,6 @@ import React from "react";
 
 function App() {
   const { isLoggenIn } = useAppContext();
-  const navigate = useNavigate()
   const router = createBrowserRouter([
     {
       path: "/",

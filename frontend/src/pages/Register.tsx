@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "react-query";
 import * as apiClient from "../api-client";
 import { useAppContext } from "../context/AppContext";
 import { useNavigate } from "react-router";
+import React from "react";
 
 export type RegisterFormData = {
   firstName: string;
