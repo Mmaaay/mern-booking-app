@@ -35,7 +35,7 @@ app.use("/api/my-hotels" , hotelRouter)
 
 //whenever there a conditional rendering of route that is conditional, thus it can be confused for api route which it is not
 
-app.get("*" , (req:Request , res:Response)=>{res.sendFile(path.join(__dirname , '../../frontend/index.html'))})
+app.get("*" , (req:Request , res:Response)=>{res.sendFile(path.join(__dirname , '../../frontend/dist/index.html'))})
 
 app.listen(7000 , ()=>{
     console.log('server is running on 7000')
