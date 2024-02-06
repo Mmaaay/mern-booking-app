@@ -6,6 +6,14 @@ import userRouter from './routes/users'
 import authRouter from './routes/auth'
 import cookieParser from "cookie-parser"
 import path from 'path'
+import { v2  as cloudinary} from 'cloudinary'
+import hotelRouter from './routes/my-hotels'
+
+cloudinary.config({
+    cloud_name : process.env.CLOUDINARY_CLOUD_NAME,
+    api_key : process.env.CLOUDINARY_API_KEY,
+    api_secret : process.env.CLOUDINARY_API_SECRET
+})
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string)
 
@@ -20,8 +28,14 @@ app.use(cors({
 
 app.use(express.static(path.join(__dirname, "../../frontend/dist")))
 
+
 app.use("/api/auth" , authRouter)
 app.use("/api/users" , userRouter)
+app.use("/api/my-hotels" , hotelRouter)
+
+//whenever there a conditional rendering of route that is conditional, thus it can be confused for api route which it is not
+
+app.get("*" , (req:Request , res:Response)=>{res.sendFile(path.join(__dirname , '../../frontend/index.html'))})
 
 app.listen(7000 , ()=>{
     console.log('server is running on 7000')
