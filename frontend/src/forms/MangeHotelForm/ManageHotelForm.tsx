@@ -5,7 +5,7 @@ import DetailsSection from "./DeatilsSection";
 import TypeSection from "./TypesSection";
 import FacilitesSection from "./FacilitiesSection";
 import GuestSection from "./guestsSections";
-import ImagesSection from "./imagesSection";
+import ImagesSection from "./ImagesSection";
 
 export type HotelFormData = {
   name: string;
