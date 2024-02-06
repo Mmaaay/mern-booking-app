@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Register from "./pages/Register";
 import SignIn from "./pages/SignIn";
-import AddHotel from "./pages/AddHotel";
+import AddHotel from "./pages/AddHotel.tsx";
 import { useAppContext } from "./context/AppContext";
 import React from "react";
 
