@@ -51,10 +51,10 @@ test("should display hotels", async ({ page }) => {
 
   await expect(page.getByText("Dublin Getaways")).toBeVisible();
   await expect(page.getByText("Lorem ipsum dolor sit amet")).toBeVisible();
-  await expect(page.getByText("Dublin, Ireland")).toBeVisible();
+  await expect(page.getByText("Dublin , Ireland")).toBeVisible();
   await expect(page.getByText("All Inclusive")).toBeVisible();
-  await expect(page.getByText("£119 per night")).toBeVisible();
-  await expect(page.getByText("2 adults, 3 children")).toBeVisible();
+  await expect(page.getByText("119 Per Night")).toBeVisible();
+  await expect(page.getByText("2 Adults , 3 Children")).toBeVisible();
   await expect(page.getByText("2 Star Rating")).toBeVisible();
 
   await expect(

@@ -12,6 +12,8 @@ export type SignInFormData = {
 };
 
 const SignIn = () => {
+  const queryClient = useQueryClient();
+
   const { showToast } = useAppContext();
   const navigate = useNavigate();
 
@@ -26,6 +28,7 @@ const SignIn = () => {
       try {
         showToast({ message: "Login in Successful!", type: "SUCCESS" });
         navigate("/");
+        await queryClient.invalidateQueries("validateToken");
       } catch (error) {
         console.log(error);
       }
