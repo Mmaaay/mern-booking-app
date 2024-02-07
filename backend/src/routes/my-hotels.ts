@@ -1,7 +1,7 @@
-import Hotel,  HotelType  from "./../models/hotel";
+import Hotel from "./../models/hotel";
+import { HotelType } from "../shared/types";
 import express, { Request, Response } from "express";
 import multer from "multer";
-import { buffer } from "stream/consumers";
 import cloudinary from "cloudinary";
 import verifyToken from "../middleware/auth";
 const { checkSchema } = require("express-validator");
