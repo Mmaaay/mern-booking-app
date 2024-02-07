@@ -1,4 +1,4 @@
-import Hotel, { HotelType } from "./../models/hotel";
+import Hotel,  HotelType  from "./../models/hotel";
 import express, { Request, Response } from "express";
 import multer from "multer";
 import { buffer } from "stream/consumers";
