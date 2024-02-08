@@ -6,6 +6,7 @@ import AddHotel from "./pages/AddHotel.tsx";
 import { useAppContext } from "./context/AppContext";
 import React from "react";
 import MyHotels from "./pages/MyHotels.tsx";
+import EditHotel from "./pages/EditHotel.tsx";
 
 function App() {
   const { isLoggenIn } = useAppContext();
@@ -28,6 +29,10 @@ function App() {
           element: isLoggenIn ? <AddHotel /> : <SignIn />,
         },
         { path: "/my-hotels", element: isLoggenIn ? <MyHotels /> : <SignIn /> },
+        {
+          path: "/edit-hotel/:hotelId",
+          element: isLoggenIn ? <EditHotel /> : <SignIn />,
+        },
       ],
     },
 
