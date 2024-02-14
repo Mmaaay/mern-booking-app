@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser"
 import path from 'path'
 import { v2  as cloudinary} from 'cloudinary'
 import hotelRouter from './routes/my-hotels'
+import searchRouter from './routes/hotels'
 
 cloudinary.config({
     cloud_name : process.env.CLOUDINARY_CLOUD_NAME,
@@ -16,7 +17,6 @@ cloudinary.config({
 })
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string)
-
 const app = express()
 app.use(cookieParser())
 app.use(express.json())
@@ -32,6 +32,7 @@ app.use(express.static(path.join(__dirname, "../../frontend/dist")))
 app.use("/api/auth" , authRouter)
 app.use("/api/users" , userRouter)
 app.use("/api/my-hotels" , hotelRouter)
+app.use("/api/hotels/", searchRouter)
 
 //whenever there a conditional rendering of route that is conditional, thus it can be confused for api route which it is not
 

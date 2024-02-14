@@ -7,6 +7,7 @@ import { useAppContext } from "./context/AppContext";
 import React from "react";
 import MyHotels from "./pages/MyHotels.tsx";
 import EditHotel from "./pages/EditHotel.tsx";
+import Search from "./pages/Search.tsx";
 
 function App() {
   const { isLoggenIn } = useAppContext();
@@ -33,13 +34,14 @@ function App() {
           path: "/edit-hotel/:hotelId",
           element: isLoggenIn ? <EditHotel /> : <SignIn />,
         },
+        {
+          path: "/search",
+          element: <Search />,
+        },
       ],
     },
 
-    {
-      path: "/search",
-      element: <Layout />,
-    },
+
   ]);
 
   return <RouterProvider router={router} />;

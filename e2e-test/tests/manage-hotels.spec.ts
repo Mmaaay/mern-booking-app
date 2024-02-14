@@ -4,18 +4,18 @@ import path from "path";
 const UI_URL = "http://localhost:5173/";
 
 test.beforeEach(async ({ page }) => {
-  await page.goto(UI_URL)
+  await page.goto(UI_URL);
 
-  await page.getByRole("link" , {name : "Sign In"}).click()
+  await page.getByRole("link", { name: "Sign In" }).click();
 
-  await expect(page.getByRole("heading" , {name : "Sign In"})).toBeVisible()
+  await expect(page.getByRole("heading", { name: "Sign In" })).toBeVisible();
 
-  await page.locator("[name=email]").fill("11@1.com")
-  await page.locator("[name=password]").fill("123123123")
-  
-  await page.getByRole("button" , {name : "Login"}).click()
+  await page.locator("[name=email]").fill("11@1.com");
+  await page.locator("[name=password]").fill("123123123");
 
-  await expect(page.getByText("Login in Successful!")).toBeVisible()
+  await page.getByRole("button", { name: "Login" }).click();
+
+  await expect(page.getByText("Login in Successful!")).toBeVisible();
 });
 
 test("should allow user to add a hotel", async ({ page }) => {
@@ -26,7 +26,9 @@ test("should allow user to add a hotel", async ({ page }) => {
   await page.locator('[name="country"]').fill("Test Country");
   await page
     .locator('[name="description"]')
-    .fill("This is a description for the Test Hotel");
+    .fill(
+      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae varius mi. Etiam tempor facilisis facilisis. Suspendisse libero enim, lobortis eget semper eu, congue nec lorem. Aenean in arcu sem. Aliquam erat volutpat. Vestibulum dignissim, eros vitae egestas ultricies, diam nunc eleifend purus, eget viverra mauris justo quis lectus. Aenean lacinia massa id tortor finibus finibus at id turpis.Nullam sagittis sagittis dolor, non congue velit pellentesque in. Integer vel dui tempus, commodo lorem sed, dignissim lorem. Aenean et nisl nunc. Etiam eget bibendum dolor. Sed nec elit nunc. In rutrum est felis, vitae suscipit nisi auctor tristique. Sed non imperdiet tellus. Donec tempor pharetra dolor, sed vestibulum eros tempus ac. Donec pharetra erat quis nibh aliquet, a finibus lorem lacinia. Vestibulum pellentesque magna ac sem finibus, sed laoreet est tristique. In ac auctor justo, vel vestibulum leo. Suspendisse potenti. "
+    );
   await page.locator('[name="pricePerNight"]').fill("100");
   await page.selectOption('select[name="starRating"]', "3");
 
@@ -39,11 +41,15 @@ test("should allow user to add a hotel", async ({ page }) => {
   await page.locator('[name="childCount"]').fill("4");
 
   await page.setInputFiles('[name="imageFiles"]', [
-    path.join(__dirname, "../data/hotel_images/", "pexels-andrea-davis-11535806.jpg")
+    path.join(
+      __dirname,
+      "../data/hotel_images/",
+      "pexels-andrea-davis-11535806.jpg"
+    ),
   ]);
 
   await page.getByRole("button", { name: "Save" }).click();
-  await expect(page.getByText("Hotel Added")).toBeVisible({timeout:50000});
+  await expect(page.getByText("Hotel Added")).toBeVisible({ timeout: 50000 });
 });
 
 test("should display hotels", async ({ page }) => {
@@ -82,3 +88,13 @@ test("should edit hotel", async ({ page }) => {
   await page.locator('[name="name"]').fill("Dublin Getaways");
   await page.getByRole("button", { name: "Save" }).click();
 });
+
+test("should show hotel search results", async ({ page }) => {
+  await page.goto(UI_URL);
+
+  await page.getByPlaceholder("Where are you going?").fill("Dublin");
+  await page.getByRole("button", { name: "Search" }).click();
+
+  await expect(page.getByText("Hotels found in Dublin")).toBeVisible();
+  await expect(page.getByText("Dublin Getaways")).toBeVisible();
+}); 
