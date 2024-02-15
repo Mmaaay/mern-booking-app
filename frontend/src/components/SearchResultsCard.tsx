@@ -26,7 +26,7 @@ const SearchResultsCard = ({ hotel }: props) => {
             </span>
             <span className="ml-1 text-sm font-semibold">{hotel.type}</span>
           </div>
-          <Link to={`detail/${hotel._id}`} className="text-2xl font-bold cursor-pointer">{hotel.name}</Link>
+          <Link to={`/detail/${hotel._id}`} className="text-2xl font-bold cursor-pointer">{hotel.name}</Link>
         </div>
         <div>
           <div className="line-clamp-4">{hotel.description}</div>
@@ -45,7 +45,7 @@ const SearchResultsCard = ({ hotel }: props) => {
           </div>
           <div className="flex flex-col items-end gap-1">
             <span className="font-bold">${hotel.pricePerNight} Per Night</span>
-            <Link to={`detail/${hotel._id}`} className="bg-blue-600 text-white h-full p-2 font-bold text-xl max-w-fit hover:bg-blue-500">View More</Link>
+            <Link to={`/detail/${hotel._id}`} className="bg-blue-600 text-white h-full p-2 font-bold text-xl max-w-fit hover:bg-blue-500">View More</Link>
           </div>
         </div>
       </div>

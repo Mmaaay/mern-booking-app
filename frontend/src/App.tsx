@@ -8,6 +8,7 @@ import React from "react";
 import MyHotels from "./pages/MyHotels.tsx";
 import EditHotel from "./pages/EditHotel.tsx";
 import Search from "./pages/Search.tsx";
+import Details from "./pages/Details.tsx";
 
 function App() {
   const { isLoggenIn } = useAppContext();
@@ -38,6 +39,10 @@ function App() {
           path: "/search",
           element: <Search />,
         },
+        {
+          path:"/detail/:hotelId",
+          element: <Details />
+        }
       ],
     },
 
