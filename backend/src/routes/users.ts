@@ -1,6 +1,7 @@
 import express, { Request, Response, Router } from "express";
 import User from "../models/user";
 import jwt from "jsonwebtoken";
+import verifyToken from "../middleware/auth";
 const { checkSchema, validationResult } = require("express-validator");
 const userRouter = express.Router();
 
@@ -37,7 +38,7 @@ userRouter.post(
       await user.save();
 
       const token = jwt.sign(
-        {userId: user.id } ,
+        { userId: user.id },
         process.env.JWT_SECRET_KEY as string,
         { expiresIn: "1d" }
       );
@@ -53,5 +54,19 @@ userRouter.post(
     }
   }
 );
+
+userRouter.get("/me", verifyToken, async (req: Request, res: Response) => {
+  const userId = req.userId;
+  try {
+    const user = await User.findById(userId).select("-password");
+    if (!user) {
+      res.status(400).json({ message: "user not found" });
+    }
+    res.json(user);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "something went wrong" });
+  }
+});
 
 export default userRouter;

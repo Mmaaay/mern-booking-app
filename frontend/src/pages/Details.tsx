@@ -17,11 +17,9 @@ const Details = () => {
         }
       );
 
-
 if(!hotel){
     return (<></>)
 }
-
 
     return (
         <div className="space-y-6">
@@ -57,7 +55,7 @@ if(!hotel){
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr]">
             <div className="whitespace-pre-line">{hotel.description}</div>
             <div className="h-fit">
-              <GuestFormInfo pricePerNight={hotel.pricePerNight} hotelId={hotel.hotelId}/>
+              <GuestFormInfo pricePerNight={hotel.pricePerNight} hotelId={hotel._id}/>
             </div>
           </div>
         </div>
