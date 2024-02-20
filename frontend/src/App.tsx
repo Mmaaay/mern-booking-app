@@ -11,6 +11,7 @@ import Search from "./pages/Search.tsx";
 import Details from "./pages/Details.tsx";
 import Booking from "./pages/Booking.tsx";
 import MyBookings from "./pages/myBookings.tsx";
+import Home from "./pages/Home.tsx";
 
 function App() {
   const { isLoggenIn } = useAppContext();
@@ -19,6 +20,8 @@ function App() {
       path: "/",
       element: <Layout />,
       children: [
+        { path: "/", element: <Home /> }
+        ,
         {
           path: "/register",
           element: <Register />,

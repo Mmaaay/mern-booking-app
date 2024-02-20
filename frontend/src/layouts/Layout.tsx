@@ -13,7 +13,8 @@ const Layout = () =>{
             <div className="container mx-auto">
                 <SearchBar />
             </div>
-            <div className="container mx-auto py-10 flex-1"><Outlet /></div>
+            <div className="container mx-auto py-10 flex-1">
+                <Outlet /></div>
             <Footer />
         </div>
     )
