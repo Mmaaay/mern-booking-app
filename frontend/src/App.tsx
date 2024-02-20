@@ -10,6 +10,7 @@ import EditHotel from "./pages/EditHotel.tsx";
 import Search from "./pages/Search.tsx";
 import Details from "./pages/Details.tsx";
 import Booking from "./pages/Booking.tsx";
+import MyBookings from "./pages/myBookings.tsx";
 
 function App() {
   const { isLoggenIn } = useAppContext();
@@ -41,17 +42,19 @@ function App() {
           element: <Search />,
         },
         {
-          path:"/detail/:hotelId",
-          element: <Details />
+          path: "/detail/:hotelId",
+          element: <Details />,
         },
         {
-          path:"/hotel/:hotelId/booking",
-          element:isLoggenIn ? <Booking /> : <SignIn />
-        }
+          path: "/hotel/:hotelId/booking",
+          element: isLoggenIn ? <Booking /> : <SignIn />,
+        },
+        {
+          path: "/my-bookings",
+          element: isLoggenIn ? <MyBookings /> : <SignIn />,
+        },
       ],
     },
-
-
   ]);
 
   return <RouterProvider router={router} />;
